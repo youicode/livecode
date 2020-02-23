@@ -1,0 +1,10 @@
+## Ignore file
+
+# Visual Studio cache/options directory
+.vs/
+Debug
+Release
+
+
+# nodejs lib
+node_modules/

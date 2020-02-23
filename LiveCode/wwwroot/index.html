@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>LiveCode</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+</head>
+
+<body>
+    <app>Loading...</app>
+
+    <script src="lib/monaco-editor/min/vs/loader.js"></script>
+    <script>
+        var monacoInterop = {};
+        monacoInterop.editors = {};
+        monacoInterop.initialize = function initialize(elementId, initialCode, language) {
+            require.config({ paths: { 'vs': 'lib/monaco-editor/min/vs' } });
+            require(['vs/editor/editor.main'], function initializeEditor() {
+                var editor = monaco.editor.create(document.getElementById(elementId), {
+                    value: initialCode,
+                    language: language
+                });
+                monacoInterop.editors[elementId] = editor;
+            });
+        }
+        monacoInterop.getCode = function getCode(elementId) {
+            return monacoInterop.editors[elementId].getValue();
+        }
+        monacoInterop.setCode = function setCode(elementId, code) {
+            monacoInterop.editors[elementId].setValue(code);
+        }
+        window.monacoInterop = monacoInterop;
+    </script>
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
+
+</html>
