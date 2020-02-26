@@ -1,16 +1,13 @@
-﻿@page "/counter"
+﻿@page "/shell"
 
-<h1>Counter</h1>
+@inject NavigationManager navigationManager
 
-<p>Current count: @currentCount</p>
-
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
-
-@code {
-    private int currentCount = 0;
-
-    private void IncrementCount()
-    {
-        currentCount++;
-    }
-}
+<div id="outer-screen">
+    <div id="inner-screen">
+        <div id="output-outer"><div id="output">@((MarkupString)Output)</div></div>
+        <div id="blank-line">&nbsp;</div>
+        <div id="input-row">
+            <span>&gt;&nbsp;</span><input @ref="inputElem" id="input" @bind="Input" type="text" @onkeydown="OnKeyDown" @onkeyup="Run" disabled="@Disabled" autofocus />
+        </div>
+    </div>
+</div>

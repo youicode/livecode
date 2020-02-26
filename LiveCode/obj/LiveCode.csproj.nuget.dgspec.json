@@ -68,6 +68,10 @@
             "Microsoft.CodeAnalysis.CSharp": {
               "target": "Package",
               "version": "[3.4.0, )"
+            },
+            "Microsoft.CodeAnalysis.CSharp.Scripting": {
+              "target": "Package",
+              "version": "[3.4.0, )"
             }
           },
           "imports": [
